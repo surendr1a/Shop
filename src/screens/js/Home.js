@@ -14,15 +14,16 @@ export default function Home() {
   const navigate = useNavigate();
 
   const addToCart = (item) => {
-    // Send data to Cart component via route
-    navigate({ state: { cartItem: item } });
+    // Correct usage of navigate to route, state should be an object
+    navigate('/cart', { state: { cartItem: item } });
   };
 
   useEffect(() => {
     // Fetch data from MongoDB using your backend API
-    axios.get('shop-production-09d5.up.railway.app/api/fooddata')
+    axios.get('https://shop-production-09d5.up.railway.app/api/fooddata')
       .then(response => {
-        const fetchedProducts = response.data.fooddata;
+        // Ensure fetchedProducts is an array
+        const fetchedProducts = response.data.fooddata || [];
         setProducts(fetchedProducts);
       })
       .catch(error => {
