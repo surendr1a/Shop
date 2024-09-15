@@ -14,7 +14,11 @@ const app = express();
 const port = 5000;
 
 app.use(cors({
+<<<<<<< HEAD
   origin: 'https://shop-omega-bay.vercel.app',
+=======
+  origin: '"https://shop-omega-bay.vercel.app"',
+>>>>>>> 4a9c622c92faad033c9f1acd079df781666fbe7c
   credentials: true,
   exposedHeaders: ['Authorization'],
 }));
