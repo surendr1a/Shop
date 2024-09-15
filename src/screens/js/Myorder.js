@@ -10,7 +10,7 @@ const MyOrders = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/myorders', { withCredentials: true });
+        const response = await axios.get('shop-production-09d5.up.railway.app/api/myorders', { withCredentials: true });
         const fetchedOrders = response.data.allOrders || [];
 
         // Assuming you have the user's email stored in local storage
