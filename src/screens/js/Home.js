@@ -14,7 +14,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const addToCart = (item) => {
-    // Correct usage of navigate to route, state should be an object
+    // Correct usage of navigate to route with state
     navigate('/cart', { state: { cartItem: item } });
   };
 
@@ -24,6 +24,7 @@ export default function Home() {
       .then(response => {
         // Ensure fetchedProducts is an array
         const fetchedProducts = response.data.fooddata || [];
+        console.log('Fetched Products:', fetchedProducts); // Debugging statement
         setProducts(fetchedProducts);
       })
       .catch(error => {
