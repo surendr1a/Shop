@@ -14,11 +14,7 @@ const app = express();
 const port = 5000;
 
 app.use(cors({
-<<<<<<< HEAD
-  origin: 'https://shop-omega-bay.vercel.app',
-=======
-  origin: '"https://shop-omega-bay.vercel.app"',
->>>>>>> 4a9c622c92faad033c9f1acd079df781666fbe7c
+  origin: 'https://shop-2o8u.vercel.app/',
   credentials: true,
   exposedHeaders: ['Authorization'],
 }));
@@ -34,7 +30,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://shop-omega-bay.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin", "https://shop-2o8u.vercel.app/");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Credentials", "true");
   next();
