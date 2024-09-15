@@ -8,33 +8,26 @@ const loginUserRoute = require('./Routes/Loginuser');
 const foodDataRoute = require('./Routes/FoodData');
 const ordersRoute = require('./Routes/Orders');
 const searchRoute = require('./Routes/Search');
-const User = require('./Model/User');
 
 const app = express();
 const port = 5000;
 
 app.use(cors({
-  origin: 'https://shop-2o8u.vercel.app/',
+  origin: 'https://shop-2o8u.vercel.app',
   credentials: true,
-  exposedHeaders: ['Authorization'],
 }));
+
 app.use(bodyParser.json());
+
 app.use(session({
   secret: 'MynameisEndtoEndYoutubeChannel$#',
   resave: true,
   saveUninitialized: true,
   cookie: {
-    httpOnly: false,
-    secure: false,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', // Set to true in production
   },
 }));
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://shop-2o8u.vercel.app/");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
 
 connection();
 

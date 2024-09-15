@@ -1,4 +1,3 @@
-// MyOrders.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Myorders.css';
@@ -13,17 +12,12 @@ const MyOrders = () => {
         const response = await axios.get('https://shop-production-09d5.up.railway.app/api/myorders', { withCredentials: true });
         const fetchedOrders = response.data.allOrders || [];
 
-        // Assuming you have the user's email stored in local storage
         const userEmail = localStorage.getItem('userEmail');
-        
-        // Filter orders based on the logged-in user's email
         const userOrders = fetchedOrders.filter(order => order.userEmail === userEmail);
 
-        // Flatten the orders array and sort by date in ascending order
         const sortedOrders = userOrders
           .flatMap(order => order.items.map(item => ({ ...item, createdAt: order.createdAt })))
-          .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
-          .reverse(); // Reverse the array to display most recent orders at the top
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Most recent orders first
 
         setOrders(sortedOrders);
       } catch (error) {
@@ -32,7 +26,7 @@ const MyOrders = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array to fetch data only once on component mount
+  }, []);
 
   return (
     <div>
@@ -48,7 +42,7 @@ const MyOrders = () => {
                 <p>Quantity: {item.quantity}</p>
                 <p>Discount: {item.discount}</p>
                 <p>Total: ${item.total}</p>
-                <p>Order Date: { Date(item.createdAt).toLocaleString()}</p>
+                <p>Order Date: {new Date(item.createdAt).toLocaleString()}</p> {/* Correct Date Formatting */}
               </li>
             ))}
           </ul>
