@@ -20,7 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     // Fetch data from MongoDB using your backend API
-    axios.get('http://localhost:5000/api/fooddata')
+    axios.get('https://shop-production-09d5.up.railway.app/api/fooddata')
       .then(response => {
         const fetchedProducts = response.data.fooddata;
         setProducts(fetchedProducts);
