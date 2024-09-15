@@ -14,7 +14,7 @@ const app = express();
 const port = 5000;
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: '"https://shop-omega-bay.vercel.app"',
   credentials: true,
   exposedHeaders: ['Authorization'],
 }));
@@ -30,7 +30,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "https://shop-omega-bay.vercel.app");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Credentials", "true");
   next();
